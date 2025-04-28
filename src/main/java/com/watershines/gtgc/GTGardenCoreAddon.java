@@ -1,10 +1,12 @@
-package com.WaterShines.gtgc;
+package com.watershines.gtgc;
 
 import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 
 import net.minecraft.data.recipes.FinishedRecipe;
+
+import com.watershines.gtgc.common.data.GTGCRecipes;
 
 import java.util.function.Consumer;
 
@@ -14,7 +16,7 @@ public class GTGardenCoreAddon implements IGTAddon {
 
     @Override
     public GTRegistrate getRegistrate() {
-        return GTGardenCore.EXAMPLE_REGISTRATE;
+        return GTGardenCore.REGISTRATE;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class GTGardenCoreAddon implements IGTAddon {
 
     @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
-        // CustomRecipes.init(provider);
+        GTGCRecipes.init(provider);
     }
 
     // If you have custom ingredient types, uncomment this & change to match your capability.

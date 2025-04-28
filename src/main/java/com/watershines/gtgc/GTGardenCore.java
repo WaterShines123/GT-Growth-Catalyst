@@ -1,0 +1,120 @@
+package com.watershines.gtgc;
+
+import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
+import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
+import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
+import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
+import com.gregtechceu.gtceu.api.sound.SoundEntry;
+import com.gregtechceu.gtceu.common.data.GTBlocks;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import com.blakebr0.mysticalagriculture.init.ModBlocks;
+import com.watershines.gtgc.api.GTGCAPI;
+import com.watershines.gtgc.common.block.GlassBlock;
+import com.watershines.gtgc.common.block.SoilBlock;
+import com.watershines.gtgc.common.data.GTGCMachines;
+import com.watershines.gtgc.common.data.GTGCMaterials;
+import com.watershines.gtgc.gtbridge.GTGCRecipeTypes;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+@Mod(GTGardenCore.MOD_ID)
+public class GTGardenCore {
+
+    public static final String MOD_ID = "gtgc";
+    public static final Logger LOGGER = LogManager.getLogger();
+    public static MaterialRegistry MATERIAL_REGISTRY;
+    public static GTRegistrate REGISTRATE;
+
+    public GTGardenCore() {
+        REGISTRATE = GTRegistrate.create(GTGardenCore.MOD_ID);
+        var bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        bus.register(this);
+        bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
+        bus.addGenericListener(MachineDefinition.class, this::registerMachines);
+        bus.addGenericListener(SoundEntry.class, this::registerSounds);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            LOGGER.info("Hello from common setup! This is *after* registries are done, so we can do this:");
+            LOGGER.info("Look, I found a {}!", Items.DIAMOND);
+        });
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        LOGGER.info("Hey, we're on Minecraft version {}!", Minecraft.getInstance().getLaunchedVersion());
+    }
+
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
+    }
+
+    @SubscribeEvent
+    public void registerMaterialRegistries(MaterialRegistryEvent event) {
+        MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(GTGardenCore.MOD_ID);;
+    }
+
+    @SubscribeEvent
+    public void registerMaterials(MaterialEvent event) {
+        GTGCMaterials.register();
+    }
+
+    private void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
+        GTGCRecipeTypes.init();
+    }
+
+    private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
+        registerSoilBlocks();
+        LOGGER.info("[gtgc] SOIL_BLOCKS contains: {}", GTGCAPI.SOIL_BLOCKS.keySet());
+        GTGCMachines.init();
+    }
+
+    public void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation, SoundEntry> event) {
+        // CustomSounds.init();
+    }
+
+    private static void registerSoilBlocks() {
+        // Map<ISoilType, Supplier<Block>>
+        GTGCAPI.SOIL_BLOCKS.put(
+                SoilBlock.SoilType.FARMLAND,
+                () -> Blocks.FARMLAND);
+        GTGCAPI.SOIL_BLOCKS.put(
+                SoilBlock.SoilType.INFERIUM_FARMLAND,
+                ModBlocks.INFERIUM_FARMLAND);
+        GTGCAPI.SOIL_BLOCKS.put(
+                SoilBlock.SoilType.PRUDENTIUM_FARMLAND,
+                ModBlocks.PRUDENTIUM_FARMLAND);
+        GTGCAPI.SOIL_BLOCKS.put(
+                SoilBlock.SoilType.TERTIUM_FARMLAND,
+                ModBlocks.TERTIUM_FARMLAND);
+        GTGCAPI.SOIL_BLOCKS.put(
+                SoilBlock.SoilType.IMPERIUM_FARMLAND,
+                ModBlocks.IMPERIUM_FARMLAND);
+        GTGCAPI.SOIL_BLOCKS.put(
+                SoilBlock.SoilType.SUPREMIUM_FARMLAND,
+                ModBlocks.SUPREMIUM_FARMLAND);
+        GTGCAPI.GLASS_BLOCKS.put(
+                GlassBlock.GlassType.GLASS,
+                () -> Blocks.GLASS);
+        GTGCAPI.GLASS_BLOCKS.put(
+                GlassBlock.GlassType.TEMPERED_GLASS,
+                GTBlocks.CASING_TEMPERED_GLASS);
+        GTGCAPI.GLASS_BLOCKS.put(
+                GlassBlock.GlassType.LAMINATED_GLASS,
+                GTBlocks.CASING_LAMINATED_GLASS);
+    }
+}

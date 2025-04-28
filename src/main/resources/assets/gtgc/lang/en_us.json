@@ -1,0 +1,12 @@
+{
+  "material.gtgc.iron3_sulfate": "Iron III sulfate",
+  "material.gtgc.sodium_sulfate": "Sodium sulfate",
+  "material.gtgc.iron3_hydroxide_slurry": "Iron III hydroxide slurry",
+  "material.gtgc.hydrated_iron3_hydroxide": "Hydrated Iron III hydroxide",
+  "material.gtgc.iron3_oxide": "Iron III Oxide",
+
+  "gtgc.recipe.greenhouseSoilTier": "Soil Tier: %d",
+  "gtgc.multiblock.greenhouse_soil_tier": "Soil Tier: %d",
+  "block.gtgc.greenhouse_test": "Greenhouse",
+  "gtgc.multiblock.greenhouse_glass_tier": "Glass Tier: %d"
+}
