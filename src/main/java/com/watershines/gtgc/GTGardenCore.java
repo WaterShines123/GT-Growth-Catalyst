@@ -22,6 +22,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import com.blakebr0.mysticalagriculture.init.ModBlocks;
 import com.watershines.gtgc.api.GTGCAPI;
+import com.watershines.gtgc.common.block.CatalystBlock;
 import com.watershines.gtgc.common.block.GlassBlock;
 import com.watershines.gtgc.common.block.SoilBlock;
 import com.watershines.gtgc.common.data.GTGCMachines;
@@ -88,7 +89,6 @@ public class GTGardenCore {
     }
 
     private static void registerSoilBlocks() {
-        // Map<ISoilType, Supplier<Block>>
         GTGCAPI.SOIL_BLOCKS.put(
                 SoilBlock.SoilType.FARMLAND,
                 () -> Blocks.FARMLAND);
@@ -116,5 +116,23 @@ public class GTGardenCore {
         GTGCAPI.GLASS_BLOCKS.put(
                 GlassBlock.GlassType.LAMINATED_GLASS,
                 GTBlocks.CASING_LAMINATED_GLASS);
+        GTGCAPI.CATALYST_BLOCKS.put(
+                CatalystBlock.CatalystType.TIER_0,
+                GTBlocks.CASING_STEEL_SOLID);
+        GTGCAPI.CATALYST_BLOCKS.put(
+                CatalystBlock.CatalystType.TIER_1,
+                ModBlocks.INFERIUM_BLOCK);
+        GTGCAPI.CATALYST_BLOCKS.put(
+                CatalystBlock.CatalystType.TIER_2,
+                ModBlocks.PRUDENTIUM_BLOCK);
+        GTGCAPI.CATALYST_BLOCKS.put(
+                CatalystBlock.CatalystType.TIER_3,
+                ModBlocks.TERTIUM_BLOCK);
+        GTGCAPI.CATALYST_BLOCKS.put(
+                CatalystBlock.CatalystType.TIER_4,
+                ModBlocks.IMPERIUM_BLOCK);
+        GTGCAPI.CATALYST_BLOCKS.put(
+                CatalystBlock.CatalystType.TIER_5,
+                ModBlocks.SUPREMIUM_BLOCK);
     }
 }

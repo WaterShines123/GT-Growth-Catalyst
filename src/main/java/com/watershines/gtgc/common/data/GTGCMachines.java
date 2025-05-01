@@ -21,8 +21,7 @@ import com.watershines.gtgc.gtbridge.GTGCRecipeTypes;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.watershines.gtgc.GTGardenCore.REGISTRATE;
-import static com.watershines.gtgc.api.pattern.GTGCPredicates.glassBlocks;
-import static com.watershines.gtgc.api.pattern.GTGCPredicates.soilBlocks;
+import static com.watershines.gtgc.api.pattern.GTGCPredicates.*;
 
 public class GTGCMachines {
 
@@ -30,17 +29,18 @@ public class GTGCMachines {
             .multiblock("greenhouse_test", GreenhouseMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTGCRecipeTypes.GREENHOUSE_TEST)
-            .recipeModifier(GTGCRecipeModifiers::greenhouseOverclock)
+            .recipeModifiers(GTGCRecipeModifiers::greenhouseOverclock)
             .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("AAAAA", "AAAAA", "GGGGG", "GGGGG", "GGGGG", "AAAAA")
-                    .aisle("AAAAA", "ABBBA", "G   G", "G   G", "G   G", "AGGGA")
-                    .aisle("AAAAA", "ABWBA", "G   G", "G   G", "G   G", "AGGGA")
-                    .aisle("AAAAA", "ABBBA", "G   G", "G   G", "G   G", "AGGGA")
+                    .aisle("ADDDA", "ABBBA", "G   G", "G   G", "G   G", "AGGGA")
+                    .aisle("ADDDA", "ABWBA", "G   G", "G   G", "G   G", "AGGGA")
+                    .aisle("ADDDA", "ABBBA", "G   G", "G   G", "G   G", "AGGGA")
                     .aisle("AAAAA", "AACAA", "GGGGG", "GGGGG", "GGGGG", "AAAAA")
                     .where(" ", any())
                     .where("C", controller(blocks(definition.getBlock())))
                     .where('G', glassBlocks())
+                    .where('D', greenhouseCatalysts())
                     .where('B', soilBlocks())
                     .where('W', blocks(Blocks.WATER))
                     .where('A', blocks(CASING_STEEL_SOLID.get())
@@ -68,6 +68,14 @@ public class GTGCMachines {
                                     .translatable(
                                             FormattingUtil
                                                     .formatNumbers(greenhouseMachine.getGlassType().getTier()))
+                                    .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
+                }
+                if (controller instanceof GreenhouseMultiblockMachine greenhouseMachine && controller.isFormed()) {
+                    components.add(Component.translatable("gtgc.multiblock.catalyst_speed_boost",
+                            Component
+                                    .translatable(
+                                            FormattingUtil
+                                                    .formatNumbers(greenhouseMachine.getAverageSpeedBoost()))
                                     .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
                 }
             })

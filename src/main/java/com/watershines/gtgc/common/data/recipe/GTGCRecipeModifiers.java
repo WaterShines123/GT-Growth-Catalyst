@@ -21,10 +21,8 @@ public class GTGCRecipeModifiers {
         if (!recipe.data.contains("min_soil_tier") || recipe.data.getInt("min_soil_tier") > greenhouseSoilTier) {
             return ModifierFunction.NULL;
         }
-        int tier_difference = greenhouseSoilTier - recipe.data.getInt("min_soil_tier");
-        double durationModifier = 1.0 / (1.0 + 0.25 * tier_difference);
+        double durationModifier = 1.0 / greenhouseMachine.getAverageSpeedBoost();
         float eutModifier = greenhouseMachine.getGlassType().getEnergyDiscount();
-
         if (RecipeHelper.getRecipeEUtTier(recipe) > greenhouseMachine.getTier()) {
             return ModifierFunction.NULL;
         }

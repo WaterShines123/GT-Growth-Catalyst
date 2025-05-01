@@ -47,5 +47,52 @@ public class GTGCChemicals {
                 .color(0xB7410E).iconSet(MaterialIconSet.DULL)
                 .formula("Fe2O3")
                 .buildAndRegister();
+
+        GTGCMaterials.MoltenGoldEssence = new Material.Builder(GTGardenCore.id("molten_gold_essence"))
+                .fluid()
+                .color(0xFFD700)
+                .buildAndRegister();
+
+        GTGCMaterials.GoldRichSludge = new Material.Builder(GTGardenCore.id("gold_rich_sludge"))
+                .fluid()
+                .color(0x8B7500)
+                .buildAndRegister();
+
+        GTGCMaterials.ImpureOrganicResidue = new Material.Builder(GTGardenCore.id("impure_organic_residue"))
+                .dust()
+                .color(0x4B3621).iconSet(MaterialIconSet.DULL)
+                .buildAndRegister();
+
+        GTGCMaterials.NeutralizedGoldSludge = new Material.Builder(GTGardenCore.id("neutralized_gold_sludge"))
+                .fluid()
+                .color(0xA67B5B)
+                .formula("Au(OH)3")
+                .buildAndRegister();
+
+        GTGCMaterials.GoldSolution = new Material.Builder(GTGardenCore.id("gold_solution"))
+                .fluid()
+                .color(0xFFD700)
+                .formula("HAuCl4")
+                .buildAndRegister();
+
+        GTGCMaterials.SodiumMetabisulfite = new Material.Builder(GTGardenCore.id("sodium_metabisulfite"))
+                .dust()
+                .color(0xDCDCDC)
+                .iconSet(MaterialIconSet.DULL)
+                .formula("Na2S2O5")
+                .buildAndRegister();
+
+        GTGCMaterials.SodiumSulfite = new Material.Builder(GTGardenCore.id("sodium_sulfite"))
+                .fluid()
+                .color(0xFFFFFF)
+                .formula("Na2SO3")
+                .buildAndRegister();
+
+        GTGCMaterials.SodiumMetabisulfiteSolution = new Material.Builder(
+                GTGardenCore.id("sodium_metabisulfite_solution"))
+                .fluid()
+                .color(0xFFFFCC)
+                .formula("Na2S2O5")
+                .buildAndRegister();
     }
 }
