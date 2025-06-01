@@ -1,0 +1,14 @@
+// 1.20.1	2025-05-30T19:45:52.5457348	Registrate Provider for gtgc [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+070c0e5aa3055bde245776c985bac1fe061f1bfa assets/gtgc/blockstates/sterile_machine_casing.json
+3513e61c22a15cc1dd8e300d28b8dac2c9c34a41 assets/gtgc/lang/en_ud.json
+beecdfcd3fa80fb8b926ed661f190f1b85e22391 assets/gtgc/lang/en_us.json
+b08100ebe9302e171827233ffc7f200281fef6f0 assets/gtgc/models/block/sterile_machine_casing.json
+1ad4f4027f352749c7c83087d6d8dfb57a026576 assets/gtgc/models/item/osmiridium_mesh.json
+5920e2be548827aedd2e0b8a8c438a01fa52db64 assets/gtgc/models/item/platinum_mesh.json
+9b75dbdf6254811f75b78344752b2f55b8150795 assets/gtgc/models/item/quantum_dot.json
+76fef854620ff4edcc69a93003eb659c45ee1f56 assets/gtgc/models/item/sterile_machine_casing.json
+d1fe328cbf379d0aab9b77ead259c4a9ec93066b assets/gtgc/models/item/tmt_catalyst.json
+82a150350d4e44ca5fa88b93849c326e0614bc88 data/ae2/tags/items/p2p_attunements/fluid_p2p_tunnel.json
+c34e5917d4b5ad1006b3d5f91d16bbf7d478d596 data/forge/tags/blocks/mineable/wrench.json
+4c396dcbda80a28e984b25d39937ba5ccd28ff09 data/gtgc/loot_tables/blocks/sterile_machine_casing.json
+c34e5917d4b5ad1006b3d5f91d16bbf7d478d596 data/minecraft/tags/blocks/mineable/pickaxe.json

@@ -22,12 +22,12 @@ public class CatalystBlock extends AppearanceBlock {
 
     public enum CatalystType implements StringRepresentable, ICatalystType {
 
-        TIER_0("tier_0", 1, 0, new ResourceLocation("minecraft", "blocks/glass")),
-        TIER_1("tier_1", 1.2, 1, new ResourceLocation("minecraft", "blocks/glass")),
-        TIER_2("tier_2", 1.3, 2, new ResourceLocation("minecraft", "blocks/glass")),
-        TIER_3("tier_2", 1.3, 2, new ResourceLocation("minecraft", "blocks/glass")),
-        TIER_4("tier_2", 1.3, 2, new ResourceLocation("minecraft", "blocks/glass")),
-        TIER_5("tier_2", 1.3, 2, new ResourceLocation("minecraft", "blocks/glass"));
+        TIER_0("tier_0", 1.0, 0, new ResourceLocation("minecraft", "blocks/glass")),
+        TIER_1("tier_1", 1.1, 1, new ResourceLocation("minecraft", "blocks/glass")),
+        TIER_2("tier_2", 1.2, 2, new ResourceLocation("minecraft", "blocks/glass")),
+        TIER_3("tier_3", 1.4, 2, new ResourceLocation("minecraft", "blocks/glass")),
+        TIER_4("tier_4", 1.4, 2, new ResourceLocation("minecraft", "blocks/glass")),
+        TIER_5("tier_5", 1.5, 2, new ResourceLocation("minecraft", "blocks/glass"));
 
         private final String name;
         private final double speedBoost;

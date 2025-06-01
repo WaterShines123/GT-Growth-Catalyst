@@ -12,11 +12,11 @@ import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
 @GTAddon
-public class GTGardenCoreAddon implements IGTAddon {
+public class GTGrowthCatalystAddon implements IGTAddon {
 
     @Override
     public GTRegistrate getRegistrate() {
-        return GTGardenCore.REGISTRATE;
+        return GTGrowthCatalyst.REGISTRATE;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class GTGardenCoreAddon implements IGTAddon {
 
     @Override
     public String addonModId() {
-        return GTGardenCore.MOD_ID;
+        return GTGrowthCatalyst.MOD_ID;
     }
 
     @Override

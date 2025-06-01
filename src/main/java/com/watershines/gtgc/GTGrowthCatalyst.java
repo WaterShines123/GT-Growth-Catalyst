@@ -25,24 +25,33 @@ import com.watershines.gtgc.api.GTGCAPI;
 import com.watershines.gtgc.common.block.CatalystBlock;
 import com.watershines.gtgc.common.block.GlassBlock;
 import com.watershines.gtgc.common.block.SoilBlock;
+import com.watershines.gtgc.common.data.GTGCBlocks;
+import com.watershines.gtgc.common.data.GTGCItems;
 import com.watershines.gtgc.common.data.GTGCMachines;
 import com.watershines.gtgc.common.data.GTGCMaterials;
+import com.watershines.gtgc.config.ConfigHandler;
+import com.watershines.gtgc.data.GTGardenCoreDataGen;
 import com.watershines.gtgc.gtbridge.GTGCRecipeTypes;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(GTGardenCore.MOD_ID)
-public class GTGardenCore {
+@Mod(GTGrowthCatalyst.MOD_ID)
+public class GTGrowthCatalyst {
 
     public static final String MOD_ID = "gtgc";
     public static final Logger LOGGER = LogManager.getLogger();
     public static MaterialRegistry MATERIAL_REGISTRY;
     public static GTRegistrate REGISTRATE;
 
-    public GTGardenCore() {
-        REGISTRATE = GTRegistrate.create(GTGardenCore.MOD_ID);
-        var bus = FMLJavaModLoadingContext.get().getModEventBus();
+    public GTGrowthCatalyst() {
+        REGISTRATE = GTRegistrate.create(GTGrowthCatalyst.MOD_ID);
+        GTGCBlocks.init();
+        GTGCItems.init();
+        GTGardenCoreDataGen.init();
+        ConfigHandler.init();
+        REGISTRATE.registerRegistrate();
 
+        var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         bus.addGenericListener(MachineDefinition.class, this::registerMachines);
@@ -66,7 +75,7 @@ public class GTGardenCore {
 
     @SubscribeEvent
     public void registerMaterialRegistries(MaterialRegistryEvent event) {
-        MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(GTGardenCore.MOD_ID);;
+        MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(GTGrowthCatalyst.MOD_ID);;
     }
 
     @SubscribeEvent
@@ -80,7 +89,6 @@ public class GTGardenCore {
 
     private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
         registerSoilBlocks();
-        LOGGER.info("[gtgc] SOIL_BLOCKS contains: {}", GTGCAPI.SOIL_BLOCKS.keySet());
         GTGCMachines.init();
     }
 
