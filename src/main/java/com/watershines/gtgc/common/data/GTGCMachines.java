@@ -70,7 +70,7 @@ public class GTGCMachines {
                             .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setExactLimit(1)))
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
-                    GTCEu.id("block/multiblock/generator/large_gas_turbine"))
+                    GTGrowthCatalyst.id("block/multiblock/greenhouse"))
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof GreenhouseMultiblockMachine greenhouseMachine && controller.isFormed()) {
                     components.add(Component.translatable("gtgc.multiblock.greenhouse_soil_tier",
@@ -173,7 +173,7 @@ public class GTGCMachines {
                     .where("I", blocks(ITEM_IMPORT_BUS[0].getBlock()))
                     .build())
             .workableCasingRenderer(GTCEu.id("block/casings/gcym/shock_proof_cutting_casing"),
-                    GTCEu.id("block/multiblock/generator/large_gas_turbine"))
+                    GTGrowthCatalyst.id("block/multiblock/altar"))
             .register();
 
     public final static MultiblockMachineDefinition NUTRIENT_SYNTHESISER = REGISTRATE
