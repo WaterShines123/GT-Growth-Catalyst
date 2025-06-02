@@ -33,6 +33,7 @@ public class GTGCBlocks {
         return createCasingBlock(name, Block::new, texture, () -> Blocks.IRON_BLOCK,
                 () -> RenderType::cutoutMipped);
     }
+
     @SuppressWarnings("removal")
     public static BlockEntry<Block> createCasingBlock(String name,
                                                       NonNullFunction<BlockBehaviour.Properties, Block> blockSupplier,

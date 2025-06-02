@@ -34,13 +34,12 @@ public class GTGCMaterials {
     public static Material LuminoBioticSolution;
     public static Material CatalyzedSerumBase;
     public static Material Tier4GrowthFluid;
-    public static Material BiopulseSlurry;
     public static Material PrecursorMatrix;
     public static Material EnrichedAlloySlurry;
+    public static Material AlloyEnrichedNutrients;
     public static Material PlasmaNutrientSuspension;
     public static Material CoatedBiofluid;
     public static Material EnzymeBondedBiofluid;
-    public static Material QuantumGrowthInfusate;
     public static Material Tier5GrowthFluid;
 
     public static Material ImpureOrganicResidue;
@@ -51,7 +50,6 @@ public class GTGCMaterials {
     public static Material MolybdenumTrioxide;
     public static Material ImperigenDust;
     public static Material Glycine;
-    public static Material BiopulseComposite;
     public static Material QuantumGrowthShell;
     public static Material TMTAlloy;
     public static Material Supregen;

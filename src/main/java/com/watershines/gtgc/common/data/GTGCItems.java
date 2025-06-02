@@ -15,7 +15,6 @@ public class GTGCItems {
     public static ItemEntry<Item> PlatinumMesh = REGISTRATE.item("platinum_mesh", Item::new).register();
     public static ItemEntry<Item> OsmiridiumMesh = REGISTRATE.item("osmiridium_mesh", Item::new).register();
     public static ItemEntry<Item> TZMCatalyst = REGISTRATE.item("tmt_catalyst", Item::new).register();
-    public static ItemEntry<Item> QuantumDot = REGISTRATE.item("quantum_dot", Item::new).register();
 
     public static void init() {}
 }

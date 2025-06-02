@@ -12,7 +12,7 @@ public class LangHandler extends com.gregtechceu.gtceu.data.lang.LangHandler {
         replace(provider, "material.gtgc.tier5_growth_fluid", "Tier 5 Growth Fluid");
         replace(provider, "material.gtgc.tmt_alloy", "TMT Alloy");
 
-        replace(provider, "item.gtgc.tzm_catalyst", "TZM Catalyst");
+        replace(provider, "item.gtgc.tmt_catalyst", "TMT Catalyst");
 
         replace(provider, "gtgc.greenhouseSoilTier", "Minimum Soil Tier %d");
         replace(provider, "gtgc.multiblock.greenhouse_soil_tier", "Soil Tier %d");

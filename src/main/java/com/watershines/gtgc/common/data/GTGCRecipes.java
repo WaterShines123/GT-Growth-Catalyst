@@ -1,5 +1,6 @@
 package com.watershines.gtgc.common.data;
 
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -7,7 +8,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import com.watershines.gtgc.common.data.recipe.GreenhouseRecipes;
-import com.watershines.gtgc.common.data.recipe.SeedRecipes;
 
 import java.util.function.Consumer;
 
@@ -25,7 +25,7 @@ import static com.watershines.gtgc.gtbridge.GTGCRecipeTypes.*;
 public class GTGCRecipes {
 
     public static void init(Consumer<FinishedRecipe> provider) {
-        SeedRecipes.init(provider);
+        // SeedRecipes.init(provider);
         GreenhouseRecipes.init(provider);
 
         FERMENTING_RECIPES.recipeBuilder("diluted_bio_slurry")
@@ -298,21 +298,6 @@ public class GTGCRecipes {
                 .duration(200).EUt(VA[ZPM])
                 .save(provider);
 
-        MIXER_RECIPES.recipeBuilder("biopulse_slurry")
-                .inputItems(dust, ImpureOrganicResidue, 1)
-                .inputItems(dust, Naquadah, 1)
-                .inputFluids(Ethanol.getFluid(1000))
-                .outputFluids(BiopulseSlurry.getFluid(1000))
-                .duration(200).EUt(VA[ZPM])
-                .save(provider);
-
-        CENTRIFUGE_RECIPES.recipeBuilder("biopulse_composite_extraction")
-                .inputFluids(BiopulseSlurry.getFluid(1000))
-                .outputItems(dust, BiopulseComposite, 1)
-                .outputItems(dust, ImpureOrganicResidue, 1)
-                .duration(160).EUt(VA[ZPM])
-                .save(provider);
-
         MIXER_RECIPES.recipeBuilder("precursor_matrix_infusion")
                 .inputFluids(Tier4GrowthFluid.getFluid(1000))
                 .inputFluids(SterileGrowthMedium.getFluid(1000))
@@ -330,16 +315,23 @@ public class GTGCRecipes {
                 .duration(300).EUt(VA[ZPM])
                 .save(provider);
 
-        MIXER_RECIPES.recipeBuilder("plasma_nutrient_suspension")
+        MIXER_RECIPES.recipeBuilder("alloy_enriched_nutrients")
                 .inputFluids(PrecursorMatrix.getFluid(1000))
                 .inputFluids(EnrichedAlloySlurry.getFluid(1000))
+                .outputFluids(AlloyEnrichedNutrients.getFluid(1000))
+                .duration(160).EUt(VA[LuV])
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("plasma_nutrient_suspension")
+                .inputFluids(AlloyEnrichedNutrients.getFluid(1000))
+                .inputFluids(Argon.getFluid(FluidStorageKeys.PLASMA, 1000))
                 .outputFluids(PlasmaNutrientSuspension.getFluid(1000))
-                .duration(160).EUt(VA[ZPM])
+                .duration(160).EUt(VA[LuV])
                 .save(provider);
 
         AUTOCLAVE_RECIPES.recipeBuilder("cuprate_coating")
                 .inputFluids(PlasmaNutrientSuspension.getFluid(1000))
-                .inputItems(dust, YttriumBariumCuprate, 1)
+                .inputItems(wireGtSingle, YttriumBariumCuprate, 2)
                 .outputFluids(CoatedBiofluid.getFluid(1000))
                 .duration(200).EUt(VA[ZPM])
                 .save(provider);
@@ -353,17 +345,19 @@ public class GTGCRecipes {
                 .duration(300).EUt(VA[ZPM])
                 .save(provider);
 
-        ASSEMBLER_RECIPES.recipeBuilder("quantum_shell_construction")
-                .inputItems(dust, BiopulseComposite, 1)
-                .inputItems(foil, Duranium, 4)
-                .inputFluids(EnzymeBondedBiofluid.getFluid(1000))
-                .outputItems(ingot, QuantumGrowthShell, 1)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("quantum_shell_construction")
+                .inputItems(rod, Osmiridium, 4)
+                .inputItems(wireFine, Europium, 64)
+                .inputItems(CustomTags.ZPM_CIRCUITS, 2)
+                .inputItems(wireGtDouble, UraniumRhodiumDinaquadide, 16)
+                .inputFluids(Helium.getFluid(FluidStorageKeys.LIQUID, 2000))
+                .inputFluids(CoatedBiofluid.getFluid(1000))
+                .outputItems(ingot, QuantumGrowthShell, 4)
                 .duration(280).EUt(VA[ZPM])
                 .save(provider);
 
         NUTRIENT_SYNTHESIZER_RECIPES.recipeBuilder("tier5_growth_fluid_synthesis")
                 .inputItems(ingot, QuantumGrowthShell, 1)
-                .inputItems(QuantumDot)
                 .inputItems(CustomTags.UV_CIRCUITS)
                 .inputFluids(EnzymeBondedBiofluid.getFluid(1000))
                 .notConsumable(TZMCatalyst)

@@ -19,7 +19,8 @@ public class GTGCRecipeUtils {
 
     public static Crop[] Crops = new Crop[] { STONE, DIRT, WOOD, ICE, DEEPSLATE, SALTPETER,
             NATURE, DYE, NETHER, COAL, CORAL, HONEY, AMETHYST, PIG, CHICKEN, COW, SHEEP, SQUID, FISH, SLIME, TURTLE,
-            BASALT, SULFUR, APATITE
+            BASALT, SULFUR, APATITE,
+
     };
 
     public static Item tertiumEssence = ForgeRegistries.ITEMS.getValue(

@@ -6,8 +6,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty
 
 import com.watershines.gtgc.GTGrowthCatalyst;
 
-import static com.gregtechceu.gtceu.api.GTValues.EV;
-import static com.gregtechceu.gtceu.api.GTValues.VA;
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.watershines.gtgc.common.data.GTGCMaterials.*;
 
@@ -209,11 +208,6 @@ public class GTGCChemicals {
                 .color(0x4C8AAE)
                 .buildAndRegister();
 
-        BiopulseSlurry = new Material.Builder(GTGrowthCatalyst.id("biopulse_slurry"))
-                .fluid()
-                .color(0xA37D8E)
-                .buildAndRegister();
-
         PrecursorMatrix = new Material.Builder(GTGrowthCatalyst.id("precursor_matrix"))
                 .fluid()
                 .color(0x4C997F)
@@ -222,6 +216,11 @@ public class GTGCChemicals {
         EnrichedAlloySlurry = new Material.Builder(GTGrowthCatalyst.id("enriched_alloy_slurry"))
                 .fluid()
                 .color(0x797A7C)
+                .buildAndRegister();
+
+        AlloyEnrichedNutrients = new Material.Builder(GTGrowthCatalyst.id("alloy_enriched_nutrients"))
+                .fluid()
+                .color(0x7A9D8D)
                 .buildAndRegister();
 
         PlasmaNutrientSuspension = new Material.Builder(GTGrowthCatalyst.id("plasma_nutrient_suspension"))
@@ -239,17 +238,12 @@ public class GTGCChemicals {
                 .color(0x7FD7C6)
                 .buildAndRegister();
 
-        QuantumGrowthInfusate = new Material.Builder(GTGrowthCatalyst.id("quantum_growth_infusate"))
-                .fluid()
-                .color(0xB1F0D3)
-                .buildAndRegister();
-
         TMTAlloy = new Material.Builder(GTGrowthCatalyst.id("tmt_alloy"))
                 .ingot().fluid()
                 .color(0xA89F91)
-                .components(Titanium, 1, Molybdenum, 4, Tungsten, 1)
+                .components(Titanium, 1, Tungsten, 1, Molybdenum, 4)
                 .blast(b -> b.temp(4200, BlastProperty.GasTier.HIGH)
-                        .blastStats(VA[EV]))
+                        .blastStats(VA[LuV]))
                 .iconSet(MaterialIconSet.METALLIC)
                 .buildAndRegister();
 
@@ -257,12 +251,6 @@ public class GTGCChemicals {
                 .dust()
                 .color(0xFD5478)
                 .iconSet(MaterialIconSet.FINE)
-                .buildAndRegister();
-
-        BiopulseComposite = new Material.Builder(GTGrowthCatalyst.id("biopulse_composite"))
-                .dust()
-                .color(0xB6AFAA)
-                .iconSet(MaterialIconSet.DULL)
                 .buildAndRegister();
 
         QuantumGrowthShell = new Material.Builder(GTGrowthCatalyst.id("quantum_growth_shell"))
